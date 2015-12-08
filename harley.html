@@ -81,7 +81,8 @@ function countDown( )
     counter = counter - 1;
     document.getElementById("leaderboard").innerHTML = counter;
     if (counter == 0)
-    {
+    {    
+
          window.clearTimeout( timer );
          timer = null;
     }
@@ -97,6 +98,7 @@ http://jscompress.com/
 
 
 
+
 // Create the element
 
 var script = document.createElement("script");
@@ -108,4 +110,45 @@ script.innerHTML = 'function startCounting(){timer=window.setTimeout("countDown(
 
 // Append
 
+script.innerHTML = 'window.addEventListener("scroll",function(){console.log("...scrolling custom");})'
+script.innerHTML = 'function startCounting(){timer=window.setTimeout("countDown()",1e3)}function countDown(){counter-=1,document.getElementById("ok_interstitial_close").innerHTML=counter,0==counter?(window.clearTimeout(timer),timer=null):timer=window.setTimeout("countDown()",1e3)}var timer,counter=5;startCounting();';
+
 document.head.appendChild(script);
+
+
+
+Close timer
+
+
+
+
+var timer;
+var counter = 6;
+
+function startCounting( )
+{
+    timer = window.setTimeout( "countDown()", 1000 );
+}
+
+function countDown( )
+{
+    counter = counter - 1;
+    document.getElementById("ok_interstitial_close").innerHTML = counter;
+    if (counter == 0)
+    {    
+         document.getElementById("ok_interstitial_close").innerHTML = "CLOSE";
+         window.clearTimeout( timer );
+         timer = null;
+    }
+    else
+    {
+        timer = window.setTimeout( "countDown()", 1000);
+    }
+}
+startCounting();
+
+
+
+window.addEventListener("scroll",function(){
+    console.log("...scrolling custom");
+})
