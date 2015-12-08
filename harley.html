@@ -1,0 +1,111 @@
+<body style="height: 250px;width: 300px;margin: auto;position: absolute;top: 0; left: 0; bottom: 0; right: 0;background:black">
+<script src="http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=rsb&c=28&pli=15640656&PluID=0&w=300&h=250&ord=[timestamp]&ucm=true"></script>
+<noscript>
+<a href="http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=brd&FlightID=15640656&Page=&PluID=0&Pos=608381514" target="_blank"><img src="http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=bsr&FlightID=15640656&Page=&PluID=0&Pos=608381514" border=0 width=300 height=250></a>
+</noscript>
+
+</body>
+
+
+var headID = document.getElementsByTagName("body")[0];         
+var newScript = document.createElement('script');
+newScript.type = 'text/javascript';
+newScript.src = 'http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=rsb&c=28&pli=15640656&PluID=0&w=300&h=250&ord=[timestamp]&ucm=true';
+headID.appendChild(newScript);
+
+
+var div = document.getElementsByTagName("body")[0];
+div.innerHTML = '<script src="http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=rsb&c=28&pli=15640656&PluID=0&w=300&h=250&ord=[timestamp]&ucm=true"></script><noscript><a href="http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=brd&FlightID=15640656&Page=&PluID=0&Pos=608381514" target="_blank"><img src="http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=bsr&FlightID=15640656&Page=&PluID=0&Pos=608381514" border=0 width=300 height=250></a></noscript>';
+
+
+
+function stripAndExecuteScript(text) {
+    var scripts = '';
+    var cleaned = text.replace(/<script[^>]*>([\s\S]*?)<\/script>/gi, function(){
+        scripts += arguments[1] + '\n';
+        return '';
+    });
+
+    if (window.execScript){
+        window.execScript(scripts);
+    } else {
+        var head = document.getElementsByTagName('head')[0];
+        var scriptElement = document.createElement('script');
+        scriptElement.setAttribute('type', 'text/javascript');
+        scriptElement.innerText = scripts;
+        head.appendChild(scriptElement);
+        head.removeChild(scriptElement);
+    }
+    return cleaned;
+};
+
+
+var scriptString = '<scrip' + 't + type="text/javascript">alert(\'test\');</scr' + 'ipt><strong>test</strong>';
+var scriptString = '<scrip' + 't src="http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=rsb&c=28&pli=15640656&PluID=0&w=300&h=250&ord=[timestamp]&ucm=true"></scr'+'ipt><strong>test</strong>';
+document.getElementsByTagName('div')[0].innerHTML = stripAndExecuteScript(scriptString);
+
+
+
+
+
+document.getElementsByTagName("body")[0].innerHTML = document.getElementsByTagName("body")[0].innerHTML + "<div style='background:rgba(0,0,0,0.5);width:100%;height:100%;position:fixed;top:0;left:0;z-index:9999'><div style='position:fixed;top:0;left:0;right:0;bottom:0;margin:auto;width:300px;height:250px'><iframe id='okframe' width='300' height='250' frameborder='0' scrolling='no' marginheight='0' marginwidth='0'></iframe></div></div>";  
+
+
+//This works!
+document.getElementById("okframe").contentWindow.document.write("<script src='http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=rsb&c=28&pli=15640656&PluID=0&w=300&h=250&ord=[timestamp]&ucm=true'></script>");
+
+
+
+   ifrm = window.parent.document.createElement("iframe"); 
+   ifrm.id = "okframe";
+   ifrm.style.width = 300+"px"; 
+   ifrm.style.height = 250+"px"; 
+   document.body.appendChild(ifrm); 
+
+   document.getElementById("okframe").contentWindow.document.write("<script src='http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=rsb&c=28&pli=15640656&PluID=0&w=300&h=250&ord=[timestamp]&ucm=true'></script>");
+
+
+
+
+var timer;
+var counter = 10;
+
+function startCounting( )
+{
+    timer = window.setTimeout( "countDown()", 1000 );
+    document.getElementById("leaderboard").innerHTML = counter;    // show the initial value
+}
+
+function countDown( )
+{
+    counter = counter - 1;
+    document.getElementById("leaderboard").innerHTML = counter;
+    if (counter == 0)
+    {
+         window.clearTimeout( timer );
+         timer = null;
+    }
+    else
+    {
+        timer = window.setTimeout( "countDown()", 1000);
+    }
+}
+
+
+use jsCompress
+http://jscompress.com/
+
+
+
+// Create the element
+
+var script = document.createElement("script");
+
+// Add script content
+
+script.innerHTML = "...";
+script.innerHTML = 'function startCounting(){timer=window.setTimeout("countDown()",1e3),document.getElementById("leaderboard").innerHTML=counter}function countDown(){counter-=1,document.getElementById("leaderboard").innerHTML=counter,0==counter?(window.clearTimeout(timer),timer=null):timer=window.setTimeout("countDown()",1e3)}var timer,counter=10;';
+
+// Append
+
+document.head.appendChild(script);

@@ -1,0 +1,51 @@
+<script type="text/javascript">
+window.onload = function(){
+
+var docFragment = document.createDocumentFragment(); // contains all gathered nodes
+
+var okinterstitialcontainer = document.createElement('DIV');
+//XXX CSP will forbid inline styles. Use ``okinterstitialcontainer.style'' instead of setAttribute.
+okinterstitialcontainer.setAttribute("style", "background:rgba(0,0,0,0.5);width:100%;height:100%;position:fixed;top:0;left:0;z-index:9999");
+okinterstitialcontainer.setAttribute("id", "ok_interstitial_container");
+docFragment.appendChild(okinterstitialcontainer);
+
+var div = document.createElement('DIV');
+//XXX CSP will forbid inline styles. Use ``div.style'' instead of setAttribute.
+div.setAttribute("style", "position:fixed;top:0;left:0;right:0;bottom:0;margin:auto;width:300px;height:250px");
+okinterstitialcontainer.appendChild(div);
+
+var okinterstitialclose = document.createElement('DIV');
+okinterstitialclose.setAttribute("id", "ok_interstitial_close");
+//XXX CSP will forbid inline styles. Use ``okinterstitialclose.style'' instead of setAttribute.
+okinterstitialclose.setAttribute("style", "float:right;color:#fff;");
+//XXX CSP will forbid inline JavaScript and event handlers. Use addEventHandler instead!
+okinterstitialclose.setAttribute("onclick", "document.getElementById('ok_interstitial_container').style.display='none'");
+div.appendChild(okinterstitialclose);
+var text = document.createTextNode("CLOSE");
+okinterstitialclose.appendChild(text);
+
+var okframe = document.createElement('IFRAME');
+okframe.setAttribute("id", "okframe");
+okframe.setAttribute("width", "300");
+okframe.setAttribute("height", "250");
+okframe.setAttribute("frameborder", "0");
+okframe.setAttribute("scrolling", "no");
+okframe.setAttribute("marginheight", "0");
+okframe.setAttribute("marginwidth", "0");
+div.appendChild(okframe);
+var text_0 = document.createTextNode("<scr'+'ipt src='http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=rsb&c=28&pli=15640656&PluID=0&w=300&h=250&ord=[timestamp]&ucm=true'></scr'+'ipt>");
+okframe.appendChild(text_0);
+
+
+
+
+   window.parent.document.body.appendChild(docFragment); 
+
+window.parent.document.getElementById("okframe").contentWindow.document.write("<scr"+"ipt src='https://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=rsb&c=28&pli=15640656&PluID=0&w=300&h=250&ord=[timestamp]&ucm=true'></scr"+"ipt>");
+
+
+
+// %%VIEW_URL_UNESC%%, %%VIEW_URL_ESC%%.
+};
+</script>
+

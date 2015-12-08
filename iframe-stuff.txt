@@ -1,0 +1,5 @@
+var myIframe = document.getElementById("myIframeId");
+var script = myIframe.contentWindow.document.createElement("script");
+script.type = "text/javascript";
+script.src = src;
+myIframe.contentWindow.document.body.appendChild(script);
